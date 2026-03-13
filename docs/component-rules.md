@@ -128,11 +128,14 @@ Avoid writing raw layout markup repeatedly.
 
 Prefer Tailwind utilities.
 
+Use classnames library where applicable instead of inline ternary operators.
+
 Avoid:
 
 inline styles
 hardcoded spacing
 arbitrary values
+ternary oprators when wpplying styling (use classnames instead)
 
 # Composition Pattern
 
