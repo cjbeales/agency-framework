@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface text-text antialiased;
+}
+
+/* Selection */
+
+::selection {
+  @apply bg-brand-500 text-white;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display tracking-display;
+}
+
+/* Prose tweaks */
+
+.prose {
+  @apply prose-slate max-w-prose;
+}
+
+.prose strong {
+  @apply text-text;
+}
+
+/* Images */
+
+img {
+  @apply max-w-full h-auto;
+}
