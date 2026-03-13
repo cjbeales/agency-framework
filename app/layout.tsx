@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
 import { Bebas_Neue, Open_Sans } from "next/font/google";
 
 const bebas = Bebas_Neue({
