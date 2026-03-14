@@ -154,10 +154,11 @@ async function choose(rl, label, options) {
 
 // ─── File writers ─────────────────────────────────────────────────────────────
 
-function writeFontsFile({ displayName, displayWeight, bodyName }) {
-  const displayId = toFontIdentifier(displayName);
-  const bodyId = toFontIdentifier(bodyName);
-  const weightLine = displayWeight ? `\n  weight: "${displayWeight}",` : "";
+function writeFontsFile({ displayName, displayWeight, bodyName, bodyWeight }) {
+  const displayId         = toFontIdentifier(displayName);
+  const bodyId            = toFontIdentifier(bodyName);
+  const displayWeightLine = displayWeight ? `\n  weight: "${displayWeight}",` : "";
+  const bodyWeightLine    = bodyWeight    ? `\n  weight: "${bodyWeight}",`    : "";
 
   const content = `import { ${displayId}, ${bodyId} } from "next/font/google";
 
@@ -167,12 +168,12 @@ function writeFontsFile({ displayName, displayWeight, bodyName }) {
  * so tailwind.config.js and components need no updates.
  */
 export const displayFont = ${displayId}({
-  variable: "--font-display",${weightLine}
+  variable: "--font-display",${displayWeightLine}
   subsets: ["latin"],
 });
 
 export const bodyFont = ${bodyId}({
-  variable: "--font-body",
+  variable: "--font-body",${bodyWeightLine}
   subsets: ["latin"],
 });
 `;
@@ -261,11 +262,12 @@ async function main() {
   const brandHex = await prompt(rl, "Brand color — primary hex (shade 600)", "#1e63e6");
 
   console.log();
-  const displayName = await prompt(rl, "Display font — Google Fonts name", "Bebas Neue");
-  const displayWeight = await prompt(rl, "Display font weight e.g. 400, 700 (blank = variable font)", "400");
+  const displayName   = await prompt(rl, "Display font — Google Fonts name", "Bebas Neue");
+  const displayWeight = await prompt(rl, "Display font weight e.g. 400, 700 (blank = variable font only)", "400");
 
   console.log();
-  const bodyName = await prompt(rl, "Body font — Google Fonts name", "Open Sans");
+  const bodyName   = await prompt(rl, "Body font — Google Fonts name", "Open Sans");
+  const bodyWeight = await prompt(rl, "Body font weight e.g. 400, 700 (blank = variable font only)", "400");
 
   const buttonShape = await choose(rl, "Button shape", [
     { label: "Pill          (rounded-full)", value: "rounded-full" },
@@ -292,6 +294,7 @@ async function main() {
     displayName,
     displayWeight: displayWeight.length > 0 ? displayWeight : null,
     bodyName,
+    bodyWeight:    bodyWeight.length > 0    ? bodyWeight    : null,
   });
   updateTailwindColors(colorScale);
   updateTailwindRadius(cardRadius, imageRadius);

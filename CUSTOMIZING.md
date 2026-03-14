@@ -1,8 +1,13 @@
 # Customizing This Framework
 
-## Quick start — run the script
+## Two commands
 
-After cloning and installing, run:
+| Command | When to use |
+|---|---|
+| `npm run customize` | **Fresh clone only.** Walks through every option from scratch. |
+| `npm run theme` | **Any time.** Reads current values, shows them as defaults, only writes files that actually changed. |
+
+### First time (fresh clone)
 
 ```bash
 npm run customize
@@ -33,6 +38,14 @@ The script will prompt you for each value and update all the relevant files auto
 ```
 
 Once done, run `npm run dev` to preview.
+
+### Mid-project changes (existing repo)
+
+```bash
+npm run theme
+```
+
+Shows your current values in brackets. Press enter to keep anything unchanged — only the files with actual changes are written.
 
 ---
 

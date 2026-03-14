@@ -9,7 +9,8 @@
     "lint": "eslint",
     "studio": "sanity dev",
     "deploy-studio": "sanity deploy",
-    "customize": "node scripts/customize.js"
+    "customize": "node scripts/customize.js",
+    "theme": "node scripts/theme.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
