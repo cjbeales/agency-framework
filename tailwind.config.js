@@ -19,17 +19,17 @@ const config = {
 
       colors: {
         brand: {
-          50: "#eef6ff",
-          100: "#d9eaff",
-          200: "#bcd9ff",
-          300: "#8fc0ff",
-          400: "#5aa0ff",
-          500: "#2f7cff",
-          600: "#1e63e6",
-          700: "#184fba",
-          800: "#194394",
-          900: "#1a3b78",
-          950: "#14264d",
+          50: "#f8f6f9",
+          100: "#f2ebf4",
+          200: "#e3d1eb",
+          300: "#d1a6e3",
+          400: "#be6cdf",
+          500: "#b037e1",
+          600: "#9d17d4",
+          700: "#7c16a6",
+          800: "#5d147b",
+          900: "#48125e",
+          950: "#310e3f",
         },
         surface: {
           DEFAULT: "#ffffff",
@@ -67,8 +67,8 @@ const config = {
       },
 
       borderRadius: {
-        card: "1rem",
-        image: "1.5rem",
+        card: "2",
+        image: "1",
       },
 
       boxShadow: {

@@ -1,17 +1,17 @@
-import { Bebas_Neue, Open_Sans } from "next/font/google";
+import { Google_Sans, Roboto } from "next/font/google";
 
 /**
- * To change the display font, swap the import and update the google font name.
- * The CSS variable names (--font-display, --font-body) stay the same so
- * tailwind.config.js and components never need updating.
+ * To change fonts, swap the import names here.
+ * The CSS variable names (--font-display, --font-body) never change,
+ * so tailwind.config.js and components need no updates.
  */
-export const displayFont = Bebas_Neue({
+export const displayFont = Google_Sans({
   variable: "--font-display",
-  weight: "400",
+  weight: "700",
   subsets: ["latin"],
 });
 
-export const bodyFont = Open_Sans({
+export const bodyFont = Roboto({
   variable: "--font-body",
   subsets: ["latin"],
 });

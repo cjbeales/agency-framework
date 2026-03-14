@@ -138,8 +138,10 @@ function ask(rl, question) {
 }
 
 async function prompt(rl, label, defaultValue) {
-  const raw = await ask(rl, `  ${label} \x1b[2m[${defaultValue}]\x1b[0m: `);
-  return raw.trim() || defaultValue;
+  const displayDefault = defaultValue !== "" ? `\x1b[2m[${defaultValue}]\x1b[0m ` : "";
+  const raw = await ask(rl, `  ${label} ${displayDefault}: `);
+  const trimmed = raw.trim();
+  return trimmed.length > 0 ? trimmed : defaultValue;
 }
 
 async function choose(rl, label, options) {
@@ -260,7 +262,7 @@ async function main() {
 
   console.log();
   const displayName = await prompt(rl, "Display font — Google Fonts name", "Bebas Neue");
-  const displayWeight = await prompt(rl, "Display font weight (blank = variable font)", "400");
+  const displayWeight = await prompt(rl, "Display font weight e.g. 400, 700 (blank = variable font)", "400");
 
   console.log();
   const bodyName = await prompt(rl, "Body font — Google Fonts name", "Open Sans");
@@ -288,7 +290,7 @@ async function main() {
 
   writeFontsFile({
     displayName,
-    displayWeight: displayWeight || null,
+    displayWeight: displayWeight.length > 0 ? displayWeight : null,
     bodyName,
   });
   updateTailwindColors(colorScale);

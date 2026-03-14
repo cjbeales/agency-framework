@@ -1,5 +1,5 @@
 export const buttons = {
-  base: "inline-flex gap-1 items-center justify-center rounded-full font-semibold transition cursor-pointer",
+  base: "inline-flex gap-1 items-center justify-center rounded-lg font-semibold transition cursor-pointer",
 
   sizes: {
     sm: "px-4 py-2 text-xs",
