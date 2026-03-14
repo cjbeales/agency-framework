@@ -124,18 +124,26 @@ Grid
 
 Avoid writing raw layout markup repeatedly.
 
+# Headless UI
+
+When creating a new component, check if [Headless UI](https://headlessui.com/) provides a similar component for the same use case. If so, use the Headless UI component as the foundation instead of building from scratch.
+
+Examples: Button, Dialog, Dropdown, Listbox, Tabs, Disclosure.
+
+Wrap Headless UI components with your design system styles (coreStyles) rather than reimplementing their behaviour.
+
 # Styling Rules
 
 Prefer Tailwind utilities.
 
-Use classnames library where applicable instead of inline ternary operators.
+**Always use the classnames library** for conditional or composed class names. Do not use ternary operators for styling.
 
 Avoid:
 
 inline styles
 hardcoded spacing
 arbitrary values
-ternary oprators when wpplying styling (use classnames instead)
+ternary operators when applying styling (use classnames instead)
 
 # Composition Pattern
 
