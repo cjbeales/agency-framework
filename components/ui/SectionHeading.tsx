@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { coreStyles } from "@/styles";
 import Heading from "./Heading";
 import Text from "./Text";
 
