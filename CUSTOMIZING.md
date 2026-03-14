@@ -1,111 +1,143 @@
 # Customizing This Framework
 
-This guide covers the minimal set of changes needed to rebrand this project for a new client.
+## Quick start — run the script
+
+After cloning and installing, run:
+
+```bash
+npm run customize
+```
+
+The script will prompt you for each value and update all the relevant files automatically:
+
+```
+┌─────────────────────────────────────────┐
+│   Agency Framework — Customize UI       │
+└─────────────────────────────────────────┘
+
+  Site name [My Agency]:
+  Brand color — primary hex (shade 600) [#1e63e6]:
+  Display font — Google Fonts name [Bebas Neue]:
+  Display font weight [400]:
+  Body font — Google Fonts name [Open Sans]:
+
+  Button shape:
+    1. Pill          (rounded-full)
+    2. Large         (rounded-xl)
+    3. Medium        (rounded-lg)
+    4. Small         (rounded-md)
+    5. Sharp corners (rounded-none)
+
+  Card border radius [1rem]:
+  Image border radius [1.5rem]:
+```
+
+Once done, run `npm run dev` to preview.
 
 ---
 
-## 1. Brand Colors
+## What gets updated
 
-Edit `tailwind.config.js` → `theme.extend.colors.brand`.
+| Prompt | File updated |
+|---|---|
+| Site name | `app/layout.tsx` — page metadata |
+| Brand color | `tailwind.config.js` — full 11-shade scale generated automatically |
+| Display / body font | `styles/fonts.ts` — Google Font imports |
+| Button shape | `styles/buttons.ts` — `base` rounded value |
+| Card / image radius | `tailwind.config.js` — `borderRadius.card` and `borderRadius.image` |
 
-The brand palette is used throughout buttons, badges, eyebrows, and links. Swap the color scale to match the client's primary color.
+---
+
+## Manual reference
+
+Use this if you want to make targeted changes without running the script.
+
+### Brand colors → `tailwind.config.js`
 
 ```js
-brand: {
-  50:  "#...",
-  100: "#...",
-  // ...
-  600: "#...", // primary button background, links
-  700: "#...", // hover states
-},
+colors: {
+  brand: {
+    600: "#1e63e6", // primary button, links, eyebrows
+    700: "#184fba", // hover states
+    // ...full scale
+  },
+}
 ```
 
-Use a tool like [uicolors.app](https://uicolors.app) to generate a full scale from a single hex value.
+Generate a full scale from a single hex at [uicolors.app](https://uicolors.app).
 
 ---
 
-## 2. Fonts
-
-Edit `styles/fonts.ts`.
-
-Swap the Google Font imports. The CSS variable names (`--font-display`, `--font-body`) stay the same — no other files need updating.
+### Fonts → `styles/fonts.ts`
 
 ```ts
-// Display font: typically used for headings
-export const displayFont = Bebas_Neue({ ... });
-
-// Body font: used for all body text
-export const bodyFont = Open_Sans({ ... });
+export const displayFont = Bebas_Neue({ ... }); // headings
+export const bodyFont = Open_Sans({ ... });      // body text
 ```
 
-Browse fonts at [fonts.google.com](https://fonts.google.com).
+The CSS variable names (`--font-display`, `--font-body`) are fixed — only the import and font name change. Browse at [fonts.google.com](https://fonts.google.com).
 
 ---
 
-## 3. Button Shape & Size
+### Button shape → `styles/buttons.ts`
 
-Edit `styles/buttons.ts`.
+Change `rounded-full` in `base` to `rounded-lg`, `rounded-md`, etc.
 
-- **Shape**: Change `rounded-full` in `base` to `rounded-md`, `rounded-lg`, etc.
-- **Padding / text size**: Edit the `sizes` object (`sm`, `md`, `lg`).
-- **Colors**: Edit the `primary` and `secondary` variant strings.
+Adjust `sizes.sm / md / lg` for padding and text size.
 
 ---
 
-## 4. Card & Image Radius
-
-Edit `tailwind.config.js` → `theme.extend.borderRadius`.
+### Card & image radius → `tailwind.config.js`
 
 ```js
 borderRadius: {
-  card: "1rem",   // used by Card component
-  image: "1.5rem", // used by project cards and images
+  card: "1rem",    // Card component
+  image: "1.5rem", // project cards and images
 },
 ```
 
-Set both to `"0.5rem"` for a sharper look, or `"0"` for fully square corners.
+---
+
+### Section spacing → `tailwind.config.js`
+
+```js
+spacing: {
+  "section":    "5rem",
+  "section-sm": "3.5rem",
+  "section-lg": "7rem",
+},
+```
 
 ---
 
-## 5. Spacing & Layout
-
-Edit `tailwind.config.js` → `theme.extend.spacing` and `theme.extend.maxWidth`.
-
-- `section` / `section-sm` / `section-lg` — vertical padding on page sections
-- `page` — max width of the main content container (default 1200px)
-- `narrow` — max width for prose/text-focused layouts (default 760px)
-
----
-
-## 6. Typography Scale
-
-Edit `styles/typography.ts`.
+### Typography → `styles/typography.ts`
 
 Each key maps to a component variant:
 
 | Key | Used by |
 |---|---|
 | `display` | `<Heading variant="display">` |
-| `h1`–`h4` | `<Heading variant="h1">` etc. |
-| `bodyLg` / `body` / `bodySm` | `<Text>` component |
+| `h1` – `h4` | `<Heading variant="h1">` etc. |
+| `bodyLg` / `body` / `bodySm` | `<Text>` |
 | `eyebrow` | `<SectionHeading>` eyebrow label |
-| `caption` | Small labels and captions |
+| `caption` | Small labels |
 
-Letter spacing for `caption` and `eyebrow` is controlled by `tracking-caption` and `tracking-eyebrow` in `tailwind.config.js`.
-
----
-
-## 7. Dark Mode
-
-Dark mode support is enabled (`darkMode: "class"` in `tailwind.config.js`). To activate it, add the `dark` class to the `<html>` element in `app/layout.tsx`.
-
-Extend the color tokens in `tailwind.config.js` with `dark:` variants in components as needed.
+Letter spacing for `eyebrow` and `caption` is the `tracking-eyebrow` / `tracking-caption` token in `tailwind.config.js`.
 
 ---
 
-## Summary Checklist
+### Dark mode
 
-- [ ] `tailwind.config.js` — brand colors, border radius, spacing, max widths, letter spacing
-- [ ] `styles/fonts.ts` — display and body font
-- [ ] `styles/buttons.ts` — button shape, padding, size defaults
-- [ ] `styles/typography.ts` — heading and body text styles
+Dark mode is ready (`darkMode: "class"` in `tailwind.config.js`). To activate, add the `dark` class to `<html>` in `app/layout.tsx` and add `dark:` variants to components as needed.
+
+---
+
+## Layout widths → `tailwind.config.js`
+
+```js
+maxWidth: {
+  page:   "1200px", // main container
+  wide:   "1400px", // wide sections
+  narrow: "760px",  // prose / text layouts
+},
+```

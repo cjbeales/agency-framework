@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "studio": "sanity dev",
-    "deploy-studio": "sanity deploy"
+    "deploy-studio": "sanity deploy",
+    "customize": "node scripts/customize.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
