@@ -1,17 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Bebas_Neue, Open_Sans } from "next/font/google";
-
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
-  subsets: ["latin"],
-});
+import { displayFont, bodyFont } from "@/styles/fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bebas.variable} ${openSans.variable}`}>
+    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable}`}>
       <body className="font-body text-text bg-surface">{children}</body>
     </html>
   );

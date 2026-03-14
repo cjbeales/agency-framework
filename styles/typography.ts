@@ -17,10 +17,10 @@ export const typography = {
   bodySm: "font-body text-sm text-text-muted",
 
   caption:
-    "font-body text-xs uppercase tracking-[0.14em] font-semibold text-text-soft",
+    "font-body text-xs uppercase tracking-caption font-semibold text-text-soft",
 
   eyebrow:
-    "font-body text-xs uppercase tracking-[0.18em] font-semibold text-brand-600",
+    "font-body text-xs uppercase tracking-eyebrow font-semibold text-brand-600",
 
   prose: "prose prose-slate max-w-prose",
 } as const;

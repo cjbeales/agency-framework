@@ -2,6 +2,7 @@ import typography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,8 +13,8 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["var(--font-bebas)", "sans-serif"],
-        body: ["var(--font-open-sans)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
 
       colors: {
@@ -66,8 +67,8 @@ const config = {
       },
 
       borderRadius: {
-        xl2: "1rem",
-        xl3: "1.5rem",
+        card: "1rem",
+        image: "1.5rem",
       },
 
       boxShadow: {
@@ -78,6 +79,8 @@ const config = {
 
       letterSpacing: {
         display: "0.02em",
+        caption: "0.14em",
+        eyebrow: "0.18em",
       },
 
       backgroundImage: {

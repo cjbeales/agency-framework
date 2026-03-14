@@ -5,9 +5,11 @@ import classNames from "classnames";
 import { coreStyles } from "@/styles";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "link";
+type ButtonSize = "sm" | "md" | "lg";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
+  size?: ButtonSize;
   children: React.ReactNode;
   className?: string;
 };
@@ -22,10 +24,18 @@ const variantStyles: Record<ButtonVariant, string> = {
 export default function Button({
   children,
   variant = "primary",
+  size = "md",
   className,
   ...props
 }: ButtonProps) {
-  const styles = classNames(variant !== "link" && coreStyles.buttons.base, variantStyles[variant], className);
+  const isLink = variant === "link";
+
+  const styles = classNames(
+    !isLink && coreStyles.buttons.base,
+    !isLink && coreStyles.buttons.sizes[size],
+    variantStyles[variant],
+    className
+  );
 
   return (
     <HeadlessButton className={styles} {...props}>

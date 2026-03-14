@@ -6,4 +6,4 @@ export { buttons } from "./buttons";
 export { cards } from "./cards";
 export { grids } from "./grids";
 export { badges } from "./badges";
-export { tokens } from "./tokens";
+export { displayFont, bodyFont } from "./fonts";
