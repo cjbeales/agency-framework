@@ -1,14 +1,11 @@
 export const buttons = {
-  base: "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition",
+  base: "inline-flex gap-1 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition cursor-pointer",
 
-  primary:
-    "inline-flex items-center justify-center rounded-full bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-brand-700",
+  primary: "bg-brand-600 hover:bg-brand-700 text-white shadow-soft",
 
-  secondary:
-    "inline-flex items-center justify-center rounded-full border border-border bg-surface px-5 py-3 text-sm font-semibold text-text hover:bg-surface-muted",
+  secondary: "bg-surface text-text hover:bg-surface-muted border border-border",
 
-  ghost:
-    "inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-text hover:bg-surface-muted",
+  ghost: "text-text hover:bg-surface-muted px-4 py-2",
 
-  link: "text-sm font-semibold text-brand-600 hover:text-brand-700",
+  link: "text-brand-600 hover:text-brand-700 text-sm underline hover:no-underline cursor-pointer font-semibold",
 } as const;

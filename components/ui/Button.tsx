@@ -1,11 +1,14 @@
+"use client";
+
+import { Button as HeadlessButton } from "@headlessui/react";
 import classNames from "classnames";
 import { coreStyles } from "@/styles";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "link";
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: React.ReactNode;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
+  children: React.ReactNode;
   className?: string;
 };
 
@@ -22,12 +25,11 @@ export default function Button({
   className,
   ...props
 }: ButtonProps) {
+  const styles = classNames(variant !== "link" && coreStyles.buttons.base, variantStyles[variant], className);
+
   return (
-    <button
-      className={classNames(variantStyles[variant], className)}
-      {...props}
-    >
+    <HeadlessButton className={styles} {...props}>
       {children}
-    </button>
+    </HeadlessButton>
   );
 }
