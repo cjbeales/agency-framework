@@ -11,21 +11,22 @@ import Grid from "@/components/layout/Grid";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
 
+
 export const metadata = {
   title: "About Us",
   description: "Learn more about our team and mission.",
 };
 
 const team = [
-  { id: 1, name: "Alex Carter",   role: "Creative Director", img: "https://picsum.photos/seed/team1/400/400" },
-  { id: 2, name: "Jamie Okafor",  role: "Lead Developer",    img: "https://picsum.photos/seed/team2/400/400" },
-  { id: 3, name: "Morgan Ellis",  role: "Strategy Lead",     img: "https://picsum.photos/seed/team3/400/400" },
+  { id: 1, name: "Alex Carter", role: "Creative Director", img: "https://picsum.photos/seed/team1/400/400" },
+  { id: 2, name: "Jamie Okafor", role: "Lead Developer", img: "https://picsum.photos/seed/team2/400/400" },
+  { id: 3, name: "Morgan Ellis", role: "Strategy Lead", img: "https://picsum.photos/seed/team3/400/400" },
 ];
 
 const projects = [
-  { id: 1, title: "Brand Refresh",    category: "Branding",   img: "https://picsum.photos/seed/proj1/800/500" },
-  { id: 2, title: "E-Commerce Site",  category: "Web Design", img: "https://picsum.photos/seed/proj2/800/500" },
-  { id: 3, title: "Campaign Visuals", category: "Marketing",  img: "https://picsum.photos/seed/proj3/800/500" },
+  { id: 1, title: "Brand Refresh", category: "Branding", img: "https://picsum.photos/seed/proj1/800/500" },
+  { id: 2, title: "E-Commerce Site", category: "Web Design", img: "https://picsum.photos/seed/proj2/800/500" },
+  { id: 3, title: "Campaign Visuals", category: "Marketing", img: "https://picsum.photos/seed/proj3/800/500" },
 ];
 
 export default function AboutUsPage() {
@@ -149,35 +150,6 @@ export default function AboutUsPage() {
                 </Card>
               ))}
             </Grid>
-          </Stack>
-        </Container>
-      </Section>
-
-      <Divider />
-
-      {/* ── Button reference — tests all variants + sizes ────────────────── */}
-      <Section variant="sm">
-        <Container>
-          <Stack variant="lg">
-            <SectionHeading
-              eyebrow="Style reference"
-              heading="Buttons"
-              subtext="All variants and sizes rendered against the current theme."
-            />
-            {(["primary", "secondary", "ghost"] as const).map((variant) => (
-              <Stack key={variant} variant="sm">
-                <Text variant="caption">{variant}</Text>
-                <div className="flex flex-wrap items-center gap-3">
-                  <Button variant={variant} size="sm">Small</Button>
-                  <Button variant={variant} size="md">Medium</Button>
-                  <Button variant={variant} size="lg">Large</Button>
-                </div>
-              </Stack>
-            ))}
-            <Stack variant="sm">
-              <Text variant="caption">link</Text>
-              <Button variant="link">Link button →</Button>
-            </Stack>
           </Stack>
         </Container>
       </Section>
