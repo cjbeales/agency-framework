@@ -267,15 +267,6 @@ export default function FontSwitcher() {
   useEffect(() => applyDisplaySize(displaySize), [displaySize]);
   useEffect(() => applyBodySize(bodySize),        [bodySize]);
 
-  // When font changes, auto-snap slider to suggestion
-  useEffect(() => {
-    if (displayFont) setDisplaySize(suggestDisplay(displayFont));
-  }, [displayFont]);
-
-  useEffect(() => {
-    if (bodyFont) setBodySize(suggestBody(bodyFont));
-  }, [bodyFont]);
-
   const hasChanges = displayFont !== null || bodyFont !== null
     || displaySize !== null || bodySize !== null;
 
@@ -329,7 +320,11 @@ export default function FontSwitcher() {
           <FontSelect
             label="Display font (headings)"
             value={displayFont?.name ?? ""}
-            onChange={(name) => setDisplayFont(findFont(name))}
+            onChange={(name) => {
+              const font = findFont(name);
+              setDisplayFont(font);
+              setDisplaySize(font ? suggestDisplay(font) : null);
+            }}
           />
           <SizeSlider
             label="Display size"
@@ -345,7 +340,11 @@ export default function FontSwitcher() {
           <FontSelect
             label="Body font"
             value={bodyFont?.name ?? ""}
-            onChange={(name) => setBodyFont(findFont(name))}
+            onChange={(name) => {
+              const font = findFont(name);
+              setBodyFont(font);
+              setBodySize(font ? suggestBody(font) : null);
+            }}
           />
           <SizeSlider
             label="Body size"
