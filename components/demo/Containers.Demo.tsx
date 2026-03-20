@@ -11,6 +11,7 @@ import type { ContainerProps } from "@/components/layout/Container";
 import Grid from "@/components/layout/Grid";
 import Section from "@/components/layout/Section";
 import Stack from "@/components/layout/Stack";
+import FontSwitcher from "./FontSwitcher";
 
 // ─── Container size demos ─────────────────────────────────────────────────────
 
@@ -104,6 +105,15 @@ const BADGE_VARIANTS: { variant: "base" | "brand"; label: string; sample: string
 export default function ContainersDemo() {
   return (
     <>
+      {/* ── Font Switcher ── */}
+      <Section variant="sm">
+        <Container>
+          <FontSwitcher />
+        </Container>
+      </Section>
+
+      <Divider />
+
       {/* ── Container widths ── */}
       <Section variant="sm">
         <Container>
