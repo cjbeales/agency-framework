@@ -10,7 +10,8 @@
     "studio": "sanity dev",
     "deploy-studio": "sanity deploy",
     "customize": "node scripts/customize.js",
-    "theme": "node scripts/theme.js"
+    "theme": "node scripts/theme.js",
+    "typography": "node scripts/typography.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
